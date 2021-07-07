@@ -2,7 +2,11 @@
   "required": true,
   "package": "me.duncanruns.infinipearl.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": ["EnderPearlEntityMixin","ResourcePackManagerMixin","ServerPlayerEntityMixin"],
+  "mixins": [
+    "EnderPearlEntityMixin",
+    "EnderPearlItemMixin",
+    "ServerPlayerEntityMixin"
+  ],
   "client": [],
   "server": [],
   "injectors": {

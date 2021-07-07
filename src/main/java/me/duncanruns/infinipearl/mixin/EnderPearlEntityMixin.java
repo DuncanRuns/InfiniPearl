@@ -1,6 +1,7 @@
 package me.duncanruns.infinipearl.mixin;
 
-import me.duncanruns.infinipearl.InfiniPearl;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -24,10 +25,9 @@ public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
         super(entityType, world);
     }
 
-    @Inject(at=@At("HEAD"),cancellable = true,method="onCollision")
+    @Inject(at = @At("HEAD"), cancellable = true, method = "onCollision")
     private void onCollisionMixin(HitResult hitResult, CallbackInfo info) {
-
-        boolean ifb = super.getItem().getItem().equals(InfiniPearl.INFINIPEARL_ITEM);
+        boolean ifb = EnchantmentHelper.getLevel(Enchantments.INFINITY, super.getItem()) > 0;
 
         super.onCollision(hitResult);
         Entity entity = this.getOwner();
