@@ -70,7 +70,9 @@ public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
                             if (serverPlayerEntity2 != null) {
                                 serverPlayerEntity2.onLanding();
                                 serverPlayerEntity2.clearCurrentExplosion();
-                                serverPlayerEntity2.damage(serverPlayerEntity.getWorld(), this.getDamageSources().enderPearl(), 5.0F);
+                                if (!ifb) {
+                                    serverPlayerEntity2.damage(serverPlayerEntity.getWorld(), this.getDamageSources().enderPearl(), 5.0F);
+                                }
                             }
 
                             this.playTeleportSound(serverWorld, vec3d);
