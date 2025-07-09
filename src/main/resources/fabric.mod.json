@@ -23,6 +23,8 @@
     "infinipearl.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.10.7"
-  }
+    "fabricloader": "0.16.14",
+    "minecraft": "1.21.7"
+  },
+  "accessWidener" : "infinipearl.accesswidener"
 }
