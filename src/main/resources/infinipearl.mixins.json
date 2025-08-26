@@ -5,6 +5,7 @@
   "mixins": [
     "EnderPearlEntityMixin",
     "EnderPearlItemMixin",
+    "PlayerInventoryMixin",
     "ServerPlayerEntityMixin",
     "ShapelessRecipeMixin"
   ],

@@ -13,6 +13,7 @@ import net.minecraft.stat.ServerStatHandler;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -45,5 +46,12 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
             this.inventory.main.set(0, infiniPearl);
         }
+    }
+
+    @Inject(method = "copyFrom", at = @At("HEAD"))
+    private void onCopy(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
+        if (alive) return;
+        if (this.world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY) || oldPlayer.isSpectator()) return;
+        this.inventory.clone(oldPlayer.inventory);
     }
 }
